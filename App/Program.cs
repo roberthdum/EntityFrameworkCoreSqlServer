@@ -16,41 +16,40 @@ namespace App
                 Console.WriteLine("");
                 context = new SchoolContext();
                 Console.WriteLine("Bienvenido al sistema de prueba de ingreso para estudiantes");
-                Console.WriteLine("Ver Alumnos (0) ");
-                Console.WriteLine("Agregar Alumno (1) ");
-                Console.WriteLine("Eliminar Alumno (2) ");
-                Console.WriteLine("Cerrar Programa (3)");
+                Console.WriteLine("Ver Alumnos (1) ");
+                Console.WriteLine("Agregar Alumno (2) ");
+                Console.WriteLine("Eliminar Alumno (3) ");
+                Console.WriteLine("Cerrar Programa (4)");
 
                 Int64.TryParse(Console.ReadLine(), out opcion);
                 switch (opcion)
                 {
-                    case 0:
-                        Console.WriteLine("Opcion 0 --------Ver lista de Alumnos --------- ");                    
+                    case 1:
+                        Console.WriteLine("Opcion 1 --------Ver lista de Alumnos --------- ");                    
                         PrintStudents(context);
 
                         break;
-                    case 1:
+                    case 2:
                         Console.WriteLine("Opcion 1 -------- Agregar Alumno--------- ");
                         CreateStuden(context);
                     
                         break;
-                    case 2:
+                    case 3:
                         Console.WriteLine("Opcion 2 -------- Eliminar Alumno --------- ");
                         DeleteStudent(context);
                         break;
 
-                    case 3:
+                    case 4:
                         Console.WriteLine("Seguro que quieres salier de la app? Y/N");
                         string exit = Console.ReadLine().ToLower(); ;
                         if(exit=="y" || exit=="s")
                         {
                             salir = 1;
                         }
-
                         
                         break;
                     default:
-                        Console.WriteLine("Opcion Invalida ");
+                        Console.WriteLine("---------------------------------Opcion Invalida-------------------------------------- ");
                         break;
                 }
 
