@@ -67,7 +67,7 @@ namespace App
             string nombre = "";
             while (true)
             {
-                Console.WriteLine("Ingrese el nombre del estudiande");
+                Console.WriteLine("Ingrese el nombre del estudiande a <<<<ELIMINAR>>>>");
                 Console.WriteLine("Para Cancelar Precionar el 0");
                 nombre = Console.ReadLine();
                 if (nombre != "0")
@@ -95,7 +95,7 @@ namespace App
             string nombre = "";
             while (true)
             {
-                Console.WriteLine("Ingrese el nombre del estudiande");
+                Console.WriteLine("Ingrese el nombre del estudiande a <<<<INSERTAR>>>>");
                 Console.WriteLine("Para Cancelar Precionar el 0");
                 nombre = Console.ReadLine();
 
