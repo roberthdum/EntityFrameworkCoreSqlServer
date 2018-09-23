@@ -8,9 +8,9 @@ namespace App
         static void Main(string[] args)
         {
             SchoolContext context = new SchoolContext();
-            Int64 opcion =0;
+            Int64 opcion = 0;
             Int64 salir = 0;
-            while (salir==0)
+            while (salir == 0)
             {
                 Console.WriteLine("");
                 Console.WriteLine("");
@@ -25,14 +25,14 @@ namespace App
                 switch (opcion)
                 {
                     case 1:
-                        Console.WriteLine("Opcion 1 --------Ver lista de Alumnos --------- ");                    
+                        Console.WriteLine("Opcion 1 --------Ver lista de Alumnos --------- ");
                         PrintStudents(context);
 
                         break;
                     case 2:
                         Console.WriteLine("Opcion 1 -------- Agregar Alumno--------- ");
                         CreateStuden(context);
-                    
+
                         break;
                     case 3:
                         Console.WriteLine("Opcion 2 -------- Eliminar Alumno --------- ");
@@ -42,24 +42,24 @@ namespace App
                     case 4:
                         Console.WriteLine("Seguro que quieres salier de la app? Y/N");
                         string exit = Console.ReadLine().ToLower(); ;
-                        if(exit=="y" || exit=="s")
+                        if (exit == "y" || exit == "s")
                         {
                             salir = 1;
                         }
-                        
+
                         break;
                     default:
                         Console.WriteLine("---------------------------------Opcion Invalida-------------------------------------- ");
                         break;
                 }
 
-             
+
 
             }
 
         }
 
-        private static void  DeleteStudent(SchoolContext context)
+        private static void DeleteStudent(SchoolContext context)
         {
             Console.WriteLine("");
             Console.WriteLine("");
@@ -98,20 +98,31 @@ namespace App
                 Console.WriteLine("Para Cancelar Precionar el 0");
                 nombre = Console.ReadLine();
 
+                Student student2 = context.Students.SingleOrDefault(x => x.Name == nombre);
                 if (nombre != "0")
                 {
-                    Student std = new Student() { Name = nombre };
-                    context.Students.Add(std);
-                    context.SaveChanges();
+                    if (student2 is null)
+                    {
+                        Student std = new Student() { Name = nombre };
+                        context.Students.Add(std);
+                        context.SaveChanges();
 
-                    PrintStudents(context);
+                        PrintStudents(context);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Es usuario {0} <<<<Existe >>>>, Intente con otro nombre", student2.Name);
+
+
+
+                    }
                 }
                 else { break; }
 
             }
 
-            
- 
+
+
         }
 
         private static void PrintStudents(SchoolContext context)
@@ -124,9 +135,9 @@ namespace App
             Console.WriteLine("---------------------------------------------------------");
             foreach (Student st in student)
             {
-              
+
                 Console.WriteLine("| El estudiante {0} es {1} ", st.StudentId.ToString(), st.Name);
-       
+
             }
             Console.WriteLine("---------------------------------------------------------");
         }
