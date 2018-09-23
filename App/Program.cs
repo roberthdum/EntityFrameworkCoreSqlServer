@@ -82,12 +82,13 @@ namespace App
                     catch { }
                     PrintStudents(context);
                 }
+                else { break; }
             }
 
 
         }
 
-        private static bool CreateStuden(SchoolContext context)
+        private static void CreateStuden(SchoolContext context)
         {
             Console.WriteLine("");
             Console.WriteLine("");
@@ -106,6 +107,7 @@ namespace App
 
                     PrintStudents(context);
                 }
+                else { break; }
 
             }
 
